@@ -7,6 +7,7 @@ gem 'rails', '3.2.12'
 
 gem 'mongo'
 gem "mongoid", "~> 3.1.6"
+gem "bson_ext"
 
 gem 'tweetstream'
 
