@@ -11,7 +11,7 @@ gem "mongoid", "~> 3.1.6"
 gem 'tweetstream'
 
 
-gem "will_paginate", '3.0.5'
+gem "will_paginate",         '3.0.5'
 gem "will_paginate_mongoid", '2.0.1'
 
 
