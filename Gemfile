@@ -7,6 +7,9 @@ gem 'rails', '3.2.12'
 
 gem "mongoid", "~> 3.1.6"
 
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0.0.beta'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
