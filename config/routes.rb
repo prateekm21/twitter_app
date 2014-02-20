@@ -1,4 +1,14 @@
 TwitterApp::Application.routes.draw do
+  root :to => "home#index"
+
+  resources :tweets, :only => [:index] do
+    collection do
+      get :retrive_tweets
+    end
+  end
+
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
