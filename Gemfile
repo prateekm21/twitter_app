@@ -17,7 +17,7 @@ gem "will_paginate_mongoid", '2.0.1'
 
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.0.0.beta'
+  gem 'rspec-rails'
   gem 'database_cleaner'
   gem 'mongoid-rspec'
 end
