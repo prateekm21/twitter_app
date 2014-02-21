@@ -7,7 +7,7 @@ TwitterApp::Application.routes.draw do
 
   resources :tweets, :only => [:index] do
     collection do
-      get :retrive_tweets
+      get :retrieve_tweets
     end
   end
 
