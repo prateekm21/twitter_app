@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Twitter App</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+  <h1><a href="http://ban.jo">Twitter API for Banjo !</a></h1>
+
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <ul class="nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="http://ban.jo/press/">Press</a></li>
+          <li><a href="http://ban.jo/careers/">Careers</a></li>
+          <li><a href="http://ban.jo/about/">About</a></li>
+          <li><a href="http://ban.jo/contact/">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <form class="form-horizontal">
+    <fieldset>
+      <!-- Form Name -->
+      <legend>Fetch Tweets !</legend>
+
+      <!-- Search input-->
+      <div class="control-group">
+        <div class="controls">
+          <input id="latitude"  name="latitude"  type="text" placeholder="Latitude"  class="input-medium search-query">
+          <input id="longitude" name="longitude" type="text" placeholder="Longitude" class="input-medium search-query">
+          <input id="radius"    name="radius"    type="text" placeholder="Radius"    class="input-medium search-query">
+          <input id="hash_tag"  name="hash_tag"  type="text" placeholder="Hash Tag"  class="input-medium search-query">
+          <p class="help-block">Get all tweets - <strong style="color:red">Required:</strong> Latitude | Longitude | Radius</p>
+        </div>
+      </div>
+
+      <!-- Button -->
+      <div class="control-group">
+        <label class="control-label" for="searchbutton"></label>
+        <div class="controls">
+          <button id="searchbutton" name="searchbutton" type="button" class="btn btn-primary">Search</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+  <div id="tweetTemplate" style="border:1px solid #666; padding: 30px;">
+    <ul class="result-items"></ul>
+  </div>
+
+  <script type="text/javascript" charset = "utf-8" >
+
+    $("button#searchbutton").click(function (e) {
+      var lat      = $("input#latitude").val(),
+          lon      = $("input#longitude").val(),
+          rad      = $("input#radius").val(),
+          hash_tag = $("input#hash_tag").val(),
+          imageBox = $('div#tweetTemplate ul.result-items').empty();
+
+      renderTweets(lat,lon,rad,hash_tag,1,20);
+    });
+
+    //
+    var renderTweets = function(lat,lon,rad,hash_tag,page_number,per_page) {
+      var options   = {
+                        geo_location: [lat,long],
+                        radius:       rad,
+                        hash_tag:     hash_tag,
+                        page_number:  page_number,
+                        per_page:     per_page
+                       }
+          _api      = "/tweets/retrieve_tweets",
+          targetEle = $(document.body).find('#tweetTemplate ul.result-items');
+
+      $.ajax({
+        type: "GET",
+        url:  _api,
+        data: options
+      }).success(function(data) {
+          $.each(data, function() {
+          var ele = this.url
+          targetEle.append(ele);
+          targetEle.append('<br>');
+        });
+        // var html = $("#tweetTemplate").html(data);
+      });
+    }
+  </script>
+
+  <!--  Footer -->
+  <hr>
+  <div class="footer">
+    <p style="color:blue"><b>Author: </b>Prateek Mehrotra</p>
+  </div>
+
+</div>
+
+</body>
+</html>
