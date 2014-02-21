@@ -1,5 +1,9 @@
 TwitterApp::Application.routes.draw do
-  root :to => "home#index"
+
+  # The priority is based upon order of creation:
+  # first created -> highest priority.
+
+  root to: "tweet#index"
 
   resources :tweets, :only => [:index] do
     collection do
@@ -7,10 +11,6 @@ TwitterApp::Application.routes.draw do
     end
   end
 
-
-
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
