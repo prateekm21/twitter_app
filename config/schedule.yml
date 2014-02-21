@@ -1,0 +1,6 @@
+pull_tweets:
+  every: 5s
+  custom_job_class: Workers::FetchTweets::DownloadTweets
+  queue:            background_tasks
+  args:             {'job_name' : 'UpdateAllChassis', 'job_type' : 'system'}
+  description:      "Update All Chassis"

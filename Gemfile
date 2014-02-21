@@ -10,10 +10,14 @@ gem "mongoid", "~> 3.1.6"
 gem "bson_ext"
 
 gem 'tweetstream'
-
+gem 'redis'
 
 gem "will_paginate",         '3.0.5'
 gem "will_paginate_mongoid", '2.0.1'
+
+# Background tasks
+gem 'resque'
+gem 'resque-scheduler'
 
 
 group :development, :test do

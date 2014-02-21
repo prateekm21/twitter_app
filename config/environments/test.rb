@@ -34,4 +34,6 @@ TwitterApp::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  ENV["REDISTOGO_URL"] = 'redis://redistogo:3069c7b2d3a7f00455a0a43a380c6347@pearlfish.redistogo.com:9996/'
 end
