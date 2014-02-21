@@ -3,7 +3,7 @@ TwitterApp::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
-  root to: "tweet#index"
+  root to: "tweets#index"
 
   resources :tweets, :only => [:index] do
     collection do
