@@ -11,7 +11,7 @@ module Workers
       API_KEY        = 'lD8kpCxDOyT4BCKu5ZwlYA'
       API_SECRET     = '6MZw4XUiAD0k2RYJAOUIm2Dd0EJeTgtKYj20jeXoaSw'
       ACCESS_TOKEN   = '27935905-idpW3KfLyGFN8VFzTh0Ki9YA6wcg0NtFN7I53iDHx'
-      ACCESS_SECRET = 'caf7UGzmlNu4VNyYuTo9Z8hUosfeZAVaK9ETC7N3HH5fe'
+      ACCESS_SECRET  = 'caf7UGzmlNu4VNyYuTo9Z8hUosfeZAVaK9ETC7N3HH5fe'
 
       def self.start
         TweetStream.configure do |config|
@@ -30,19 +30,21 @@ module Workers
           def self.async_write(status)
             EventMachine.defer do
               Fiber.new do
-                location = status.geo[:coordinates]           rescue []
-                htag     = status.attrs[:entities][:hashtags] rescue {:hashtags=>[]}
-
-                l = location.map {|ech| ech.to_s} unless location.blank?
+                location = status.geo[:coordinates]            rescue []
+                _htag     = status.attrs[:entities][:hashtags] rescue []
+                #get only tags names
+                htag     = _htag.map {|e| e[:text]} unless _htag.empty?
+                l        = location.map {|ech| ech.to_f} unless location.blank?
 
                 obj = {
-                    :geo_loc    => l,
+                    :location   => l,
                     :username   => status.user.screen_name,
                     :tweet      => status.text,
-                    :hash_tags  => htag,
+                    :hash_tags  => htag.nil? ? []: htag ,
                     :tweet_date => status.created_at
                 }
-
+                puts "\n===="
+                puts obj
                 #save to DB
                 Tweet.create(obj)
                 puts "Counter: #{@@counter}" if @@counter%500 == 0
