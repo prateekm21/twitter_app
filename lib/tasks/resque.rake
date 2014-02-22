@@ -10,7 +10,11 @@ namespace :resque do
     # you probably already have this somewhere
     # Resque.redis = 'localhost:6379'
     uri = URI.parse(ENV["REDISTOGO_URL"])
-    Resque.redis = Redis.new(:host => uri.host, :port => uri.port)
+    if Rails.env == 'production'
+      Resque.redis = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
+    else
+      Resque.redis = Redis.new(:host => uri.host, :port => uri.port)
+    end
 
     # The schedule doesn't need to be stored in a YAML, it just needs to
     # be a hash.  YAML is usually the easiest.

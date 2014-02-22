@@ -3,7 +3,6 @@ require 'resque/server'
 uri          = URI.parse(ENV["REDISTOGO_URL"])
 
 if Rails.env == 'production'
-  puts "============HERE I AM==============="
   Resque.redis = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
 else
   Resque.redis = Redis.new(:host => uri.host, :port => uri.port)
