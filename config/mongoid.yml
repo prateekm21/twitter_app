@@ -87,7 +87,7 @@ production:
       hosts:
         - ds033579.mongolab.com:33579
       username: heroku_app22403802
-      password: india123
+      password: h1mnja4d5di3leg864p54p438d
       database: heroku_app22403802
       options:
         skip_version_check: true
