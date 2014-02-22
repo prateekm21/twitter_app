@@ -6,8 +6,9 @@ gem 'rails', '3.2.12'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mongo'
-gem "mongoid", "~> 3.1.6"
+gem "mongoid", "3.1.4"
 gem "bson_ext"
+gem 'geocoder'
 
 gem 'tweetstream'
 gem 'redis'
