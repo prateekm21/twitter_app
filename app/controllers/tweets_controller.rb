@@ -9,7 +9,7 @@ class TweetsController < ApplicationController
        response  = {error: 'Missing cordinates or radius'}
        _status   = 400
     else
-       response = Tweet.retrieve_tweets(params)
+       response = Tweet.retrive_tweets(params)
        _status   = 200
     end
 
