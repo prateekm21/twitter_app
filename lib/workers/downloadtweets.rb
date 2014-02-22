@@ -43,8 +43,7 @@ module Workers
                     :hash_tags  => htag.nil? ? []: htag ,
                     :tweet_date => status.created_at
                 }
-                puts "\n===="
-                puts obj
+
                 #save to DB
                 Tweet.create(obj)
                 puts "Counter: #{@@counter}" if @@counter%500 == 0
