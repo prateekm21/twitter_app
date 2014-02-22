@@ -71,7 +71,7 @@ describe Tweet do
       params = {
           geo_location: [46.7495932, -92.1179977],
           radius:       '.5',
-          page_number:  1,
+          page:  1,
           per_page:     1
       }
 

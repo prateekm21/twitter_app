@@ -12,7 +12,7 @@ class Tweet
     _location = params[:geo_location].map {|e| e.to_f}
     _radius   = params[:radius].to_f
     _hash_tag = params[:hash_tag]
-    _pg_num   = params[:page_number]
+    _pg_num   = params[:page]
     _per_page = params[:per_page]
 
     tweet_list = Tweet.within_circle( location: [ _location, _radius ] ).desc('tweet_date') rescue []
