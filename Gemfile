@@ -16,6 +16,9 @@ gem 'redis'
 gem "will_paginate",         '3.0.5'
 gem "will_paginate_mongoid", '2.0.1'
 
+#deploy on heroku with unicorn
+gem 'unicorn'
+
 # Background tasks
 gem 'resque'
 gem 'resque-scheduler'
