@@ -20,7 +20,7 @@ gem "will_paginate_mongoid", '2.0.1'
 gem 'unicorn'
 
 # Background tasks
-gem 'resque'
+gem 'resque' , "~> 1.22.0"
 gem 'resque-scheduler'
 
 

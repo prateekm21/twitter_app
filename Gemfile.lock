@@ -96,7 +96,6 @@ GEM
       mongoid (>= 3.0.1)
       rake
       rspec (>= 2.14)
-    mono_logger (1.1.0)
     moped (1.5.2)
     multi_json (1.8.4)
     multipart-post (2.0.0)
@@ -134,16 +133,15 @@ GEM
     redis (3.0.7)
     redis-namespace (1.4.1)
       redis (~> 3.0.4)
-    resque (1.25.1)
-      mono_logger (~> 1.0)
+    resque (1.22.0)
       multi_json (~> 1.0)
-      redis-namespace (~> 1.2)
+      redis-namespace (~> 1.0)
       sinatra (>= 0.9.2)
       vegas (~> 0.1.2)
-    resque-scheduler (2.5.4)
-      redis (~> 3.0.4)
-      resque (~> 1.25.1)
-      rufus-scheduler (~> 2.0.24)
+    resque-scheduler (2.2.0)
+      redis (>= 3.0.0)
+      resque (>= 1.20.0, < 1.25)
+      rufus-scheduler (~> 2.0)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
@@ -230,7 +228,7 @@ DEPENDENCIES
   mongoid-rspec
   rails (= 3.2.12)
   redis
-  resque
+  resque (~> 1.22.0)
   resque-scheduler
   rspec-rails
   sass-rails (~> 3.2.3)
