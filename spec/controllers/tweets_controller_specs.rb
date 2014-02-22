@@ -20,7 +20,7 @@ describe TweetsController do
     end
 
     it "should return desired info with correct params" do
-      Tweet.should_receive(:retrieve_tweets).and_return({okay: true})
+      Tweet.should_receive(:retrive_tweets).and_return({okay: true})
       get :retrieve_tweets , :geo_location => ["12.25542","13.545454"],  :radius => "10"
 
       response.status.should eql(200)
