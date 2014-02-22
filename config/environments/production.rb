@@ -64,5 +64,6 @@ TwitterApp::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+  ENV['MONGOHQ_URL']   = 'mongodb://heroku_app22403802:india123@ds033579.mongolab.com:33579/heroku_app22403802'
   ENV["REDISTOGO_URL"] = 'redis://redistogo:3069c7b2d3a7f00455a0a43a380c6347@pearlfish.redistogo.com:9996/'
 end
