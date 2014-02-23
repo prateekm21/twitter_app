@@ -1,5 +1,4 @@
 #pagination_panel{
-    /*border: 1px solid black;*/
     display: none;
     position: relative;
     width: 300px;
@@ -9,50 +8,41 @@
 }
 
 #prev-btn{
-    /*border: 1px solid black;*/
     display: block;
-    position: relative;
+    position: absolute;
     width: 10px;
     cursor: pointer;
 }
 
 #curr-pg{
-    /*border: 1px solid black;*/
     display: block;
-    position: relative;
-    top: -20px;
+    position: absolute;
     left: 10px;
     width: 50px;
     text-align: right;
 }
 
 #middle{
-    /*border: 1px solid black;*/
     display: block;
-    position: relative;
+    position: absolute;
     left: 60px;
-    top: -40px;
     width: 15px;
 }
 
 #total-pg{
-    /*border: 1px solid black;*/
     display: block;
-    position: relative;
+    position: absolute;
     left: 75px;
     width: 50px;
-    top: -60px;
     text-align: left;
 }
 
 #next-btn{
-    /*border: 1px solid black;*/
     display: block;
-    position: relative;
+    position: absolute;
     width: 10px;
     cursor: pointer;
     left: 125px;
-    top: -80px;
 }
 
 #next-btn:hover, #prev-btn:hover{
