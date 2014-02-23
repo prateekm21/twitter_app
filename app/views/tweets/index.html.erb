@@ -62,13 +62,12 @@
       <span id="total-pg"></span>
       <span id="next-btn">&gt;</span>
     </div>
-
+    <div id="map-canvas">
+    </div>
     <div id="tweetTemplate"  style="border:1px solid #666; padding: 30px;">
       <ul class="result-items">
       </ul>
     </div>
-      <div id="map-canvas">
-      </div>
 
     <!--  Footer -->
     <hr>
@@ -124,7 +123,7 @@
         _api      = "/tweets/retrieve_tweets",
         error     = $('div.controls p.help-block span#error').empty(),
         targetEle = $(document.body).find('#tweetTemplate ul.result-items');
-
+        map.setCenter(new google.maps.LatLng(lat,long));
         $.ajax({
           type: "GET",
           url:  _api,
@@ -147,6 +146,8 @@
         setMarkers(data.response);
       };
       var setMarkers = function(tweets){
+        window.old_markers = window.old_markers || [];
+        clearOldMarkers();
         for(id in tweets) {
           var loc = new google.maps.LatLng(tweets[id].location[0], tweets[id].location[1]);
           var marker_option ={
@@ -155,6 +156,12 @@
             animation: google.maps.Animation.DROP,
           };
           var marker = new google.maps.Marker(marker_option);
+          window.old_markers.push(marker)
+        }
+      };
+      var clearOldMarkers = function(){
+        for(id in window.old_markers){
+          window.old_markers[id].setMap(null);
         }
       };
       var showPagination = function(total, current){
