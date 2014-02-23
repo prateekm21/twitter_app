@@ -32,8 +32,8 @@
         <!-- Search input-->
         <div class="control-group">
           <div class="controls">
-            <input id="latitude"  name="latitude"  type="text" placeholder="Latitude"  class="input-medium search-query" value="37.23423">
-            <input id="longitude" name="longitude" type="text" placeholder="Longitude" class="input-medium search-query" value="-122.2384923">
+            <input id="latitude"  name="latitude"  type="text" placeholder="Latitude"  class="input-medium search-query" value="-7.7026">
+            <input id="longitude" name="longitude" type="text" placeholder="Longitude" class="input-medium search-query" value="113.99608">
             <input id="radius"    name="radius"    type="text" placeholder="Radius"    class="input-medium search-query" value="0.24">
             <input id="hash_tag"  name="hash_tag"  type="text" placeholder="Hash Tag"  class="input-medium search-query">
             <p class="help-block">
@@ -144,6 +144,18 @@
               ele = ele + "Tweeted on: "   + this.tweet_date  + '<br><br>';
           targetEle.append(ele);
         });
+        setMarkers(data.response);
+      };
+      var setMarkers = function(tweets){
+        for(id in tweets) {
+          var loc = new google.maps.LatLng(tweets[id].location[0], tweets[id].location[1]);
+          var marker_option ={
+            position: loc,
+            map: map,
+            animation: google.maps.Animation.DROP,
+          };
+          var marker = new google.maps.Marker(marker_option);
+        }
       };
       var showPagination = function(total, current){
         window.current = current;

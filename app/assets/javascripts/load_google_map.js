@@ -12,3 +12,4 @@ function initialize() {
 base_map = function(){
     google.maps.event.addDomListener(window, 'load', initialize);
 }
+
