@@ -22,7 +22,7 @@ class Tweet
     if _pg_num.present? && _per_page.present? && tweet_list.present?
       response ||= {}
       response[:response] = tweet_list.paginate(:page => _pg_num, :per_page => _per_page)
-      response[:current_page] = _pg_num
+      response[:current_page] = _pg_num.to_i
     else
       response = {:response=> tweet_list}
     end
