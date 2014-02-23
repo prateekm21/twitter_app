@@ -32,9 +32,9 @@
         <!-- Search input-->
         <div class="control-group">
           <div class="controls">
-            <input id="latitude"  name="latitude"  type="text" placeholder="Latitude"  class="input-medium search-query">
-            <input id="longitude" name="longitude" type="text" placeholder="Longitude" class="input-medium search-query">
-            <input id="radius"    name="radius"    type="text" placeholder="Radius"    class="input-medium search-query">
+            <input id="latitude"  name="latitude"  type="text" placeholder="Latitude"  class="input-medium search-query" value="37.23423">
+            <input id="longitude" name="longitude" type="text" placeholder="Longitude" class="input-medium search-query" value="-122.2384923">
+            <input id="radius"    name="radius"    type="text" placeholder="Radius"    class="input-medium search-query" value="12">
             <input id="hash_tag"  name="hash_tag"  type="text" placeholder="Hash Tag"  class="input-medium search-query">
             <p class="help-block">
               Get all tweets - <strong style="color:red">Required:</strong>
@@ -54,6 +54,14 @@
         </div>
       </fieldset>
     </form>
+
+    <div id="pagination_panel">
+      <span id="prev-btn">&lt;</span>
+      <span id="curr-pg"></span>
+      <span id="middle"> of </span>
+      <span id="total-pg"></span>
+      <span id="next-btn">&gt;</span>
+    </div>
 
     <div id="tweetTemplate"  style="border:1px solid #666; padding: 30px;">
       <ul class="result-items">
@@ -126,18 +134,32 @@
           url:  _api,
           data: options
         }).success(function(data) {
-              x = data.response
-              $.each(x, function() {
-                var ele = "User: " +this.username + '<br>',
-                    ele = ele + "Tweet:      "   + this.tweet + '<br>',
-                    ele = ele + "Hash Tag:   "   + this.hash_tags + '<br>',
-                    ele = ele + "Location:   "   + this.location  + '<br>',
-                    ele = ele + "Tweeted on: "   + this.tweet_date  + '<br><br>';
-                targetEle.append(ele);
-              });
-              // var html = $("#tweetTemplate").html(data);
+              showResult(data);
             });
-      }
+      };
+      var showResult = function(data){
+        var tweets = data.response;
+        showPagination(data.total,data.current_page);
+        $.each(tweets, function() {
+          var ele = "User: " +this.username + '<br>',
+              ele = ele + "Tweet:      "   + this.tweet + '<br>',
+              ele = ele + "Hash Tag:   "   + this.hash_tags + '<br>',
+              ele = ele + "Location:   "   + this.location  + '<br>',
+              ele = ele + "Tweeted on: "   + this.tweet_date  + '<br><br>';
+          targetEle.append(ele);
+        });
+      };
+      var showPagination = function(total, current){
+        var panel = $("#pagination_panel");
+        var pages = Math.ceil(total/20);
+        panel.hide();
+        if( pages > 0){
+          panel.show();
+          $("#total-pg").text(pages);
+          $("#curr-pg").text(current);
+
+        }
+      };
   </script>
 
 </body>
