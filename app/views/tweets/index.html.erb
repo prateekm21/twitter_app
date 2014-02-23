@@ -64,10 +64,6 @@
     </div>
     <div id="map-canvas">
     </div>
-    <div id="tweetTemplate"  style="border:1px solid #666; padding: 30px;">
-      <ul class="result-items">
-      </ul>
-    </div>
 
     <!--  Footer -->
     <hr>
@@ -133,16 +129,7 @@
             });
       };
       var showResult = function(data){
-        var tweets = data.response;
         showPagination(data.total,data.current_page);
-        $.each(tweets, function() {
-          var ele = "User: " +this.username + '<br>',
-              ele = ele + "Tweet:      "   + this.tweet + '<br>',
-              ele = ele + "Hash Tag:   "   + this.hash_tags + '<br>',
-              ele = ele + "Location:   "   + this.location  + '<br>',
-              ele = ele + "Tweeted on: "   + this.tweet_date  + '<br><br>';
-          targetEle.append(ele);
-        });
         setMarkers(data.response);
       };
       var setMarkers = function(tweets){
