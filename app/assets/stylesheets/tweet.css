@@ -1,3 +1,13 @@
+#no-result{
+    display: none;
+    position: relative;
+    width: 300px;
+    height: 30px;
+    left: 380px;
+    top: -50px;
+    color: red;
+}
+
 #map-canvas{
     position: relative;
     width: 1140px;

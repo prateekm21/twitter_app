@@ -46,6 +46,18 @@ var renderTweets = function(lat,long,rad,hash_tag,page_number,per_page) {
         });
 };
 
+var showResult = function(data){
+    if(data.response.length == 0){
+        $("#no-result").show();
+    }
+    else{
+        $("#no-result").hide();
+        showPagination(data.total,data.current_page);
+        setMarkers(data.response);
+    }
+};
+
+
 var showPagination = function(total, current){
     window.current = current;
     var panel = $("#pagination_panel");

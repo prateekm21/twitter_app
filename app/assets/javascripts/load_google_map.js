@@ -52,8 +52,3 @@ var clearOldMarkers = function(){
         window.old_markers[id].setMap(null);
     }
 };
-
-var showResult = function(data){
-    showPagination(data.total,data.current_page);
-    setMarkers(data.response);
-};
