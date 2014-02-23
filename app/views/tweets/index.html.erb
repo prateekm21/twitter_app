@@ -157,7 +157,12 @@
           panel.show();
           $("#total-pg").text(pages);
           $("#curr-pg").text(current);
-
+          if(current == 1){
+            $("#prev-btn").hide();
+          }
+          if(current == pages){
+            $("#next-btn").hide();
+          }
         }
       };
   </script>
