@@ -37,7 +37,9 @@
             <input id="radius"    name="radius"    type="text" placeholder="Radius"    class="input-medium search-query">
             <input id="hash_tag"  name="hash_tag"  type="text" placeholder="Hash Tag"  class="input-medium search-query">
             <p class="help-block">
-              Get all tweets - <strong style="color:red">Required:</strong> Latitude | Longitude | Radius
+              Get all tweets - <strong style="color:red">Required:</strong>
+                  <span id='lat-help'>Latitude</span> |  <span id='lon-help'>Longitude</span> |
+                  <span id='rad-help'>Radius</span>
               <span id="error"></span>
             </p>
           </div>
@@ -86,18 +88,25 @@
       });
       //
       var validate = function(lat,long,rad,hash_tag){
-        if (lat === "" || long === "" || rad === "")
-        {
-          var imageBox  = $('div.controls p.help-block span#error').empty(),
-              targetEle = $(document.body).find('div.controls p.help-block span#error'),
-              ele       = "<strong><span style=\"color:blue\">  *** MISSING</span></strong>";
+        var flag              = true;
+            input_validate    = [$('span#lat-help'),$('span#lon-help'), $('span#rad-help')]
+        $.each([lat,long,rad], function(i,e){
+          if (e == "")
+          {
+            input_validate[i].css('color', 'red');
+            flag = false;
+          }
+          else
+          {
+            input_validate[i].css('color', '');
+          }
+        });
 
-          targetEle.append(ele);
-        }
-        else
+        if (flag)
         {
           renderTweets(lat,long,rad,hash_tag,1,20);
         }
+
       };
       //
       var renderTweets = function(lat,long,rad,hash_tag,page_number,per_page) {
