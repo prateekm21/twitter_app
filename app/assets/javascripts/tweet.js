@@ -48,7 +48,9 @@ var renderTweets = function(lat,long,rad,hash_tag,page_number,per_page) {
 
 var showResult = function(data){
     if(data.response.length == 0){
+        clearOldMarkers();
         $("#no-result").show();
+        $("#pagination_panel").hide();
     }
     else{
         $("#no-result").hide();
