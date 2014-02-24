@@ -78,6 +78,40 @@ describe Tweet do
       resp = Tweet.retrive_tweets(params)
       resp[:response].count.should eql(1)
     end
+
+    it "should paginate and return same tweets" do
+      params = {
+          geo_location: [46.7495932, -92.1179977],
+          radius:       '.5',
+          page:  1,
+          per_page:     1
+      }
+
+      resp_1 = Tweet.retrive_tweets(params)
+      resp_2 = Tweet.retrive_tweets(params)
+
+      resp_1[:response].count.should eql(resp_2[:response].count)
+    end
+
+    it "should return diff tweet for different page" do
+      params_1 = {
+          geo_location: [46.7495932, -92.1179977],
+          radius:       '.5',
+          page:         1,
+          per_page:     1
+      }
+      params_2 = {
+          geo_location: [46.7495932, -92.1179977],
+          radius:       '.5',
+          page:         6,
+          per_page:     1
+      }
+
+      resp_1 = Tweet.retrive_tweets(params_1)
+      resp_2 = Tweet.retrive_tweets(params_2)
+
+      resp_1[:response][0]._id.should_not eql(resp_2[:response][0]._id)
+    end
   end
 
 end
