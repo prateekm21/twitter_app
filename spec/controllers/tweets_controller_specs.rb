@@ -15,7 +15,7 @@ describe TweetsController do
     it "should return 400 status if params missing" do
       get :retrieve_tweets , :geo_location => [],  :radius => ""
 
-      response.status.should eql(400)
+      response.status.should eql(422)
       JSON.parse(response.body)['error'].should  eql('Missing cordinates or radius')
     end
 
