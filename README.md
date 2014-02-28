@@ -14,6 +14,7 @@ RSpec
 ```
 rake db:mongoid:create_indexes RAILS_ENV=test
 bundle exec rspec -fd spec/models/* spec/controllers/*
+bundle exec rspec -fd spec/integration/*
 ```
 
 Run App locally
