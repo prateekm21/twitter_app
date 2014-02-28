@@ -39,5 +39,13 @@ describe TweetsController do
       JSON.parse(response.body)['okay'].should be_true
     end
 
+    it "should return desired info with hash filter in params" do
+      Tweet.should_receive(:retrive_tweets).and_return({okay: true})
+      get :retrieve_tweets , :geo_location => @location,  :radius => @radius,  @hash_tag => 'test' , :page => 1, :per_page => 1
+
+      response.status.should eql(200)
+      JSON.parse(response.body)['okay'].should be_true
+    end
+    
   end
 end
