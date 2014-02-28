@@ -9,12 +9,12 @@ var validate = function(page_number,per_page){
     $.each([lat,long,rad], function(i,e){
         if (e == "")
         {
-            input_validate[i].css('color', 'red');
+            input_validate[i].addClass('font-red');
             flag = false;
         }
         else
         {
-            input_validate[i].css('color', '');
+            input_validate[i].removeClass('font-red');
         }
     });
 
