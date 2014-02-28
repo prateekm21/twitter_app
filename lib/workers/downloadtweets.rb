@@ -46,8 +46,7 @@ module Workers
 
                 #save to DB
                 Tweet.create(obj)
-                puts "Counter: #{@@counter}" if @@counter%500 == 0
-                EventMachine.stop if @@counter == 500000
+                puts "Tweets added since running: #{@@counter}" if @@counter%500 == 0
               end.resume
             end
           end
