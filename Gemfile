@@ -30,6 +30,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'mongoid-rspec'
   gem 'capybara'
+  gem 'selenium-webdriver'
 end
 
 # Gems used only for assets and not required
