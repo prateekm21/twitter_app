@@ -9,6 +9,10 @@ Heroku
 ======
 http://peaceful-harbor-6903.herokuapp.com/
 
+How it works:
+======
+[[Features]]
+
 RSpec
 =====
 ```
