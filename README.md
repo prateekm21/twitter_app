@@ -11,7 +11,7 @@ http://peaceful-harbor-6903.herokuapp.com/
 
 How it works:
 ======
-[[Features]]
+https://github.com/prateekm21/twitter_app/wiki/Features
 
 RSpec
 =====
