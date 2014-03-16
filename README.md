@@ -7,7 +7,7 @@ Twitter app to retrive tweets based on geo location and hash tag
 
 Heroku
 ======
-http://peaceful-harbor-6903.herokuapp.com/
+http://pm-twitter-app.herokuapp.com/
 
 How it works:
 ======
